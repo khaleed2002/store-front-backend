@@ -3,12 +3,24 @@ import { Product } from "./product";
 
 export type Order={
     id?:number;
-    quantity?:number;
     user_id?:number;
     status:string;
 }
 
 export class OrderModel{
+    async index():Promise<Order[]>{
+        try{
+            const conn=await client.connect();
+            const sql='SELECT * FROM orders';
+            const result=await conn.query(sql);
+            conn.release();
+            return result.rows;
+        }catch(err){
+            throw new Error(
+                `Failed to get orders with following error:${err}`
+            );
+        }
+    }
     async currentOrder(user_id:number):Promise<{}>{//here
         try{
             const conn = await client.connect();
@@ -43,10 +55,10 @@ export class OrderModel{
             const conn = await client.connect();
             let sql='INSERT INTO orders_products(order_id,product_id,quantity) VALUES($1,$2,$3) RETURNING *';
             await conn.query(sql,[order_id,product_id,quantity]);
-            sql='SELECT product_id,order_id,name,category,price,quantity FROM products p FULL OUTER JOIN orders_products o_p ON p.id=o_p.product_id';
-            const result=await conn.query(sql);
+            sql='SELECT product_id,order_id,name,category,price,quantity FROM products p FULL OUTER JOIN orders_products o_p ON p.id=o_p.product_id WHERE product_id=$1 AND order_id=$2';
+            const result=await conn.query(sql,[product_id,order_id]);
             conn.release();
-            return result.rows[0];
+            return result.rows[result.rows.length-1];
         }catch(err){
             throw new Error(
                 `Failed to create orders with following error:${err}`

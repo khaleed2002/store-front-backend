@@ -42,9 +42,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.categoryRoute = void 0;
 var express_1 = __importDefault(require("express"));
 var product_1 = require("../models/product");
-var dotenv_1 = __importDefault(require("dotenv"));
 var user_1 = require("./user");
-dotenv_1.default.config();
 var products = new product_1.ProductModel();
 var index = function (_req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var allProducts;

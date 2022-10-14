@@ -30,6 +30,7 @@ var express_1 = __importDefault(require("express"));
 var body_parser_1 = __importDefault(require("body-parser"));
 var user_1 = __importDefault(require("./handlers/user"));
 var product_1 = __importStar(require("./handlers/product"));
+var order_1 = require("./handlers/order");
 var app = (0, express_1.default)();
 var port = 3000;
 app.use(body_parser_1.default.json());
@@ -37,6 +38,7 @@ app.get('/', function (req, res) {
     res.send('Hello World');
 });
 app.use('/products', product_1.categoryRoute);
+app.use(order_1.orderRoute);
 (0, user_1.default)(app);
 (0, product_1.default)(app);
 app.listen(port, function () {

@@ -1,11 +1,6 @@
 import express ,{Request,Response} from 'express';
-import { UserModel } from '../models/user';
 import { Product,ProductModel } from '../models/product';
-import dotenv from 'dotenv';
-import jwt, { Secret } from 'jsonwebtoken';
-import { verifyAuthToken,authenticate } from './user';
-
-dotenv.config();
+import { verifyAuthToken } from './user';
 
 const products=new ProductModel();
 

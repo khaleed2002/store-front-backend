@@ -44,9 +44,33 @@ var database_1 = __importDefault(require("../database"));
 var OrderModel = /** @class */ (function () {
     function OrderModel() {
     }
+    OrderModel.prototype.index = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var conn, sql, result, err_1;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 3, , 4]);
+                        return [4 /*yield*/, database_1.default.connect()];
+                    case 1:
+                        conn = _a.sent();
+                        sql = 'SELECT * FROM orders';
+                        return [4 /*yield*/, conn.query(sql)];
+                    case 2:
+                        result = _a.sent();
+                        conn.release();
+                        return [2 /*return*/, result.rows];
+                    case 3:
+                        err_1 = _a.sent();
+                        throw new Error("Failed to get orders with following error:".concat(err_1));
+                    case 4: return [2 /*return*/];
+                }
+            });
+        });
+    };
     OrderModel.prototype.currentOrder = function (user_id) {
         return __awaiter(this, void 0, void 0, function () {
-            var conn, sql1, result1, lastOrder_id, sql, result, err_1;
+            var conn, sql1, result1, lastOrder_id, sql, result, err_2;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -66,8 +90,8 @@ var OrderModel = /** @class */ (function () {
                         conn.release();
                         return [2 /*return*/, result.rows];
                     case 4:
-                        err_1 = _a.sent();
-                        throw new Error("Failed to get orders with following error:".concat(err_1));
+                        err_2 = _a.sent();
+                        throw new Error("Failed to get orders with following error:".concat(err_2));
                     case 5: return [2 /*return*/];
                 }
             });
@@ -76,7 +100,7 @@ var OrderModel = /** @class */ (function () {
     ;
     OrderModel.prototype.create = function (order) {
         return __awaiter(this, void 0, void 0, function () {
-            var conn, sql, result, err_2;
+            var conn, sql, result, err_3;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -91,8 +115,8 @@ var OrderModel = /** @class */ (function () {
                         conn.release();
                         return [2 /*return*/, result.rows[0]];
                     case 3:
-                        err_2 = _a.sent();
-                        throw new Error("Failed to create orders with following error:".concat(err_2));
+                        err_3 = _a.sent();
+                        throw new Error("Failed to create orders with following error:".concat(err_3));
                     case 4: return [2 /*return*/];
                 }
             });
@@ -101,7 +125,7 @@ var OrderModel = /** @class */ (function () {
     ;
     OrderModel.prototype.addProductToOrder = function (order_id, product_id, quantity) {
         return __awaiter(this, void 0, void 0, function () {
-            var conn, sql, result, err_3;
+            var conn, sql, result, err_4;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -113,15 +137,15 @@ var OrderModel = /** @class */ (function () {
                         return [4 /*yield*/, conn.query(sql, [order_id, product_id, quantity])];
                     case 2:
                         _a.sent();
-                        sql = 'SELECT product_id,order_id,name,category,price,quantity FROM products p FULL OUTER JOIN orders_products o_p ON p.id=o_p.product_id';
-                        return [4 /*yield*/, conn.query(sql)];
+                        sql = 'SELECT product_id,order_id,name,category,price,quantity FROM products p FULL OUTER JOIN orders_products o_p ON p.id=o_p.product_id WHERE product_id=$1 AND order_id=$2';
+                        return [4 /*yield*/, conn.query(sql, [product_id, order_id])];
                     case 3:
                         result = _a.sent();
                         conn.release();
-                        return [2 /*return*/, result.rows[0]];
+                        return [2 /*return*/, result.rows[result.rows.length - 1]];
                     case 4:
-                        err_3 = _a.sent();
-                        throw new Error("Failed to create orders with following error:".concat(err_3));
+                        err_4 = _a.sent();
+                        throw new Error("Failed to create orders with following error:".concat(err_4));
                     case 5: return [2 /*return*/];
                 }
             });
