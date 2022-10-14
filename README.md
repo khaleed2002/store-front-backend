@@ -53,4 +53,155 @@ Before submitting, make sure that your project is complete with a `README.md`. Y
 
 Before submitting your project, spin it up and test each endpoint. If each one responds with data that matches the data shapes from the `REQUIREMENTS.md`, it is ready for submission!
 
-### How to Run Project
+# How to Run Project
+
+## Store front-backend Project
+
+### scripts
+- npm run lint (to run eslint)
+- npm run prettier (to run prettier)
+- npm run build (compile typescript to javascript)
+- npm run start (open server using nodemon)
+- npm run test (test spec files)
+### start server
+1- npm run build
+2- node dist/server.js
+
+
+## important
+ to run project you should create .env file with these parameters
+- DB_NAME=store_front_backend
+- DB_NAME_TEST=store_front_backend_test
+- DB_PASSWORD=
+- DB_HOST=
+- DB_USER=
+- ENV=dev
+- BCRYPT_PASSWORD = 
+- SALT_ROUNDS=
+- pepper=
+- TOKEN_SECRET=
+## API Reference
+#### create a user ( return JWT )
+
+```http
+  post /users
+  
+  request body{
+    username: value,
+    password: value,
+    firstname: value,
+    lastname: value
+  }
+```
+#### authenticate user ( return JWT )
+
+```http
+  post /users/auth
+  
+  request body{
+    username:value,
+    password:value
+  }
+```
+
+#### get all users 
+
+```http
+  get /users
+  - need barear Authentication(JWT)
+```
+#### get specific user
+
+```http
+  get /users/:id
+  - need barear Authentication(JWT)
+```
+#### delete user (return deleted user data)
+
+```http
+  delete /users
+  
+  request body{
+    id:value
+  }
+  - need barear Authentication(JWT)
+```
+------------------------------------------------------
+#### create a product ( return created product )
+
+```http
+  post /products
+  
+  request body{
+    name: value,
+    price: value,
+    category: value,
+  }
+  - need barear Authentication(JWT)
+```
+#### show all products
+
+```http
+  get /products
+```
+#### show specific product
+
+```http
+  get /products/:id
+```
+#### delete product
+
+```http
+  delete /products
+  
+  request body{
+    id:value
+  }
+  - need barear Authentication(JWT)
+```
+#### get products by category
+
+```http
+  get /products/category
+  
+  request body{
+    category:value
+  }
+```
+------------------------------------------------------
+#### create an order ( return created order )
+
+```http
+  post /users/:userid/orders
+  
+  request body{
+    status: value,
+  }
+  - need barear Authentication(JWT)
+```
+#### add product to order ( return data about order & product )
+
+```http
+  post /users/:userid/orders/:orderid
+  
+  request body{
+    product_id: value,
+    quantity: value
+  }
+  - need barear Authentication(JWT)
+```
+#### get current order
+
+```http
+  get /users/:userid/orders/current
+
+  - need barear Authentication(JWT)
+```
+#### get all orders( return data about order )
+
+```http
+  get /orders
+
+  - need barear Authentication(JWT)
+```
+
