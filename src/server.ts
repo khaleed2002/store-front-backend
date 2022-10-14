@@ -17,3 +17,5 @@ productRoute(app);
 app.listen(port, () => {
   console.log(`server start on localhost:${port}`);
 });
+
+export default app;

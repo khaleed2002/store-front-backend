@@ -44,3 +44,4 @@ app.use(order_1.orderRoute);
 app.listen(port, function () {
     console.log("server start on localhost:".concat(port));
 });
+exports.default = app;
