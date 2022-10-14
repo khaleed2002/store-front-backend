@@ -83,7 +83,7 @@ Before submitting your project, spin it up and test each endpoint. If each one r
 ## API Reference
 #### create a user ( return JWT )
 
-```http
+```
   post /users
   
   request body{
@@ -95,7 +95,7 @@ Before submitting your project, spin it up and test each endpoint. If each one r
 ```
 #### authenticate user ( return JWT )
 
-```http
+```
   post /users/auth
   
   request body{
@@ -106,19 +106,19 @@ Before submitting your project, spin it up and test each endpoint. If each one r
 
 #### get all users 
 
-```http
+```
   get /users
   - need barear Authentication(JWT)
 ```
 #### get specific user
 
-```http
+```
   get /users/:id
   - need barear Authentication(JWT)
 ```
 #### delete user (return deleted user data)
 
-```http
+```
   delete /users
   
   request body{
@@ -129,7 +129,7 @@ Before submitting your project, spin it up and test each endpoint. If each one r
 ------------------------------------------------------
 #### create a product ( return created product )
 
-```http
+```
   post /products
   
   request body{
@@ -141,17 +141,17 @@ Before submitting your project, spin it up and test each endpoint. If each one r
 ```
 #### show all products
 
-```http
+```
   get /products
 ```
 #### show specific product
 
-```http
+```
   get /products/:id
 ```
 #### delete product
 
-```http
+```
   delete /products
   
   request body{
@@ -161,7 +161,7 @@ Before submitting your project, spin it up and test each endpoint. If each one r
 ```
 #### get products by category
 
-```http
+```
   get /products/category
   
   request body{
@@ -171,7 +171,7 @@ Before submitting your project, spin it up and test each endpoint. If each one r
 ------------------------------------------------------
 #### create an order ( return created order )
 
-```http
+```
   post /users/:userid/orders
   
   request body{
@@ -181,7 +181,7 @@ Before submitting your project, spin it up and test each endpoint. If each one r
 ```
 #### add product to order ( return data about order & product )
 
-```http
+```
   post /users/:userid/orders/:orderid
   
   request body{
@@ -192,14 +192,14 @@ Before submitting your project, spin it up and test each endpoint. If each one r
 ```
 #### get current order
 
-```http
+```
   get /users/:userid/orders/current
 
   - need barear Authentication(JWT)
 ```
 #### get all orders( return data about order )
 
-```http
+```
   get /orders
 
   - need barear Authentication(JWT)
