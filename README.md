@@ -55,8 +55,6 @@ Before submitting your project, spin it up and test each endpoint. If each one r
 
 # How to Run Project
 
-## Store front-backend Project
-
 ### scripts
 - npm run lint (to run eslint)
 - npm run prettier (to run prettier)
