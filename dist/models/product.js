@@ -68,7 +68,6 @@ var ProductModel = /** @class */ (function () {
             });
         });
     };
-    ;
     ProductModel.prototype.show = function (product_id) {
         return __awaiter(this, void 0, void 0, function () {
             var conn, sql, result, err_2;
@@ -93,7 +92,6 @@ var ProductModel = /** @class */ (function () {
             });
         });
     };
-    ;
     ProductModel.prototype.create = function (product) {
         return __awaiter(this, void 0, void 0, function () {
             var conn, sql, result, err_3;
@@ -105,7 +103,11 @@ var ProductModel = /** @class */ (function () {
                     case 1:
                         conn = _a.sent();
                         sql = 'INSERT INTO products(name,price,category) VALUES($1,$2,$3) RETURNING *';
-                        return [4 /*yield*/, conn.query(sql, [product.name, product.price, product.category])];
+                        return [4 /*yield*/, conn.query(sql, [
+                                product.name,
+                                product.price,
+                                product.category,
+                            ])];
                     case 2:
                         result = _a.sent();
                         conn.release();
@@ -118,7 +120,6 @@ var ProductModel = /** @class */ (function () {
             });
         });
     };
-    ;
     ProductModel.prototype.update = function (product) {
         return __awaiter(this, void 0, void 0, function () {
             var conn, sql, result, err_4;

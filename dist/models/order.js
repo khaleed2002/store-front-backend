@@ -97,7 +97,6 @@ var OrderModel = /** @class */ (function () {
             });
         });
     };
-    ;
     OrderModel.prototype.create = function (order) {
         return __awaiter(this, void 0, void 0, function () {
             var conn, sql, result, err_3;
@@ -122,7 +121,6 @@ var OrderModel = /** @class */ (function () {
             });
         });
     };
-    ;
     OrderModel.prototype.addProductToOrder = function (order_id, product_id, quantity) {
         return __awaiter(this, void 0, void 0, function () {
             var conn, sql, result, err_4;
@@ -137,7 +135,8 @@ var OrderModel = /** @class */ (function () {
                         return [4 /*yield*/, conn.query(sql, [order_id, product_id, quantity])];
                     case 2:
                         _a.sent();
-                        sql = 'SELECT product_id,order_id,name,category,price,quantity FROM products p FULL OUTER JOIN orders_products o_p ON p.id=o_p.product_id WHERE product_id=$1 AND order_id=$2';
+                        sql =
+                            'SELECT product_id,order_id,name,category,price,quantity FROM products p FULL OUTER JOIN orders_products o_p ON p.id=o_p.product_id WHERE product_id=$1 AND order_id=$2';
                         return [4 /*yield*/, conn.query(sql, [product_id, order_id])];
                     case 3:
                         result = _a.sent();

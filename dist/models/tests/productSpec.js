@@ -42,7 +42,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var product_1 = require("../product");
 var database_1 = __importDefault(require("../../database"));
 var product = new product_1.ProductModel();
-describe("Product Model", function () {
+describe('Product Model', function () {
     it('should have an index method', function () {
         expect(product.index).toBeDefined();
     });
@@ -62,7 +62,7 @@ describe("Product Model", function () {
 var mouse = {
     name: 'mouse',
     price: 20,
-    category: 'computer'
+    category: 'computer',
 };
 describe('Test methods results in ProductModel', function () { return __awaiter(void 0, void 0, void 0, function () {
     var burger;
@@ -78,7 +78,7 @@ describe('Test methods results in ProductModel', function () { return __awaiter(
                             id: 1,
                             name: 'mouse',
                             price: 20,
-                            category: 'computer'
+                            category: 'computer',
                         });
                         return [2 /*return*/];
                 }
@@ -91,12 +91,14 @@ describe('Test methods results in ProductModel', function () { return __awaiter(
                     case 0: return [4 /*yield*/, product.index()];
                     case 1:
                         result = _a.sent();
-                        expect(result).toEqual([{
+                        expect(result).toEqual([
+                            {
                                 id: 1,
                                 name: 'mouse',
                                 price: 20,
-                                category: 'computer'
-                            }]);
+                                category: 'computer',
+                            },
+                        ]);
                         return [2 /*return*/];
                 }
             });
@@ -112,7 +114,7 @@ describe('Test methods results in ProductModel', function () { return __awaiter(
                             id: 1,
                             name: 'mouse',
                             price: 20,
-                            category: 'computer'
+                            category: 'computer',
                         });
                         return [2 /*return*/];
                 }
@@ -132,7 +134,7 @@ describe('Test methods results in ProductModel', function () { return __awaiter(
                             id: 1,
                             name: 'mouse',
                             price: 25,
-                            category: 'computer'
+                            category: 'computer',
                         });
                         return [2 /*return*/];
                 }
@@ -141,7 +143,7 @@ describe('Test methods results in ProductModel', function () { return __awaiter(
         burger = {
             name: 'burger',
             price: 10,
-            category: 'food'
+            category: 'food',
         };
         it('get product by category', function () { return __awaiter(void 0, void 0, void 0, function () {
             var result;
@@ -152,12 +154,14 @@ describe('Test methods results in ProductModel', function () { return __awaiter(
                         return [4 /*yield*/, product.getProductsByCategory('computer')];
                     case 1:
                         result = _a.sent();
-                        expect(result).toEqual([{
+                        expect(result).toEqual([
+                            {
                                 id: 1,
                                 name: 'mouse',
                                 price: 25,
-                                category: 'computer'
-                            }]);
+                                category: 'computer',
+                            },
+                        ]);
                         return [2 /*return*/];
                 }
             });

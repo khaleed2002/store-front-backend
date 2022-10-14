@@ -139,7 +139,12 @@ describe('Test methods results in order Model', function () { return __awaiter(v
                     case 1:
                         result = _a.sent();
                         expect(result).toEqual({
-                            product_id: 1, order_id: 1, name: 'mouse', category: 'computer', price: 20, quantity: 3
+                            product_id: 1,
+                            order_id: 1,
+                            name: 'mouse',
+                            category: 'computer',
+                            price: 20,
+                            quantity: 3,
                         });
                         return [2 /*return*/];
                 }
@@ -161,7 +166,7 @@ describe('Test methods results in order Model', function () { return __awaiter(v
                         expect(result).toEqual([
                             { order_id: 1, product_id: 1, quantity: 3, status: 'active' },
                             { order_id: 1, product_id: 2, quantity: 1, status: 'active' },
-                            { order_id: 1, product_id: 3, quantity: 4, status: 'active' }
+                            { order_id: 1, product_id: 3, quantity: 4, status: 'active' },
                         ]);
                         return [2 /*return*/];
                 }

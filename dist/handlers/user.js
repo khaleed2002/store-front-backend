@@ -70,7 +70,7 @@ var show = function (req, res) { return __awaiter(void 0, void 0, void 0, functi
     });
 }); };
 var create = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var Username, Password, Firstname, Lastname, newUser, result, JWT, err_1;
+    var Username, Password, Firstname, Lastname, newUser, JWT, err_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -83,14 +83,16 @@ var create = function (req, res) { return __awaiter(void 0, void 0, void 0, func
                     username: Username,
                     password: Password,
                     firstname: Firstname,
-                    lastname: Lastname
+                    lastname: Lastname,
                 };
                 return [4 /*yield*/, users.create(newUser)];
             case 1:
-                result = _a.sent();
-                JWT = jsonwebtoken_1.default.sign({ user: {
-                        Username: Username
-                    } }, process.env.TOKEN_SECRET);
+                _a.sent();
+                JWT = jsonwebtoken_1.default.sign({
+                    user: {
+                        Username: Username,
+                    },
+                }, process.env.TOKEN_SECRET);
                 res.status(201).json(JWT);
                 return [3 /*break*/, 3];
             case 2:
@@ -138,7 +140,7 @@ var verifyAuthToken = function (req, res, next) {
         }
         var token = authorizationHeader.split(' ')[1];
         if (token) {
-            jsonwebtoken_1.default.verify(token, process.env.TOKEN_SECRET, function (err, decoded) {
+            jsonwebtoken_1.default.verify(token, process.env.TOKEN_SECRET, function (err) {
                 if (err) {
                     return res.status(401).json("authorization failed: Invalid token");
                 }

@@ -45,7 +45,7 @@ var bcrypt_1 = __importDefault(require("bcrypt"));
 var dotenv_1 = __importDefault(require("dotenv"));
 var jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 dotenv_1.default.config();
-var _a = process.env, pepper = _a.pepper, SALT_ROUNDS = _a.SALT_ROUNDS, TOKEN_SECRET = _a.TOKEN_SECRET;
+var _a = process.env, pepper = _a.pepper, SALT_ROUNDS = _a.SALT_ROUNDS;
 var UserModel = /** @class */ (function () {
     function UserModel() {
     }
@@ -73,7 +73,6 @@ var UserModel = /** @class */ (function () {
             });
         });
     };
-    ;
     UserModel.prototype.show = function (user_id) {
         return __awaiter(this, void 0, void 0, function () {
             var conn, sql, result, err_2;
@@ -98,7 +97,6 @@ var UserModel = /** @class */ (function () {
             });
         });
     };
-    ;
     UserModel.prototype.create = function (user) {
         return __awaiter(this, void 0, void 0, function () {
             var conn, sql, hash, result, err_3;
@@ -111,7 +109,12 @@ var UserModel = /** @class */ (function () {
                         conn = _a.sent();
                         sql = 'INSERT INTO users(username,firstname,lastname,password) VALUES(($1),($2),($3),($4)) RETURNING id,username,firstname,lastname';
                         hash = bcrypt_1.default.hashSync(user.password + pepper, parseInt(SALT_ROUNDS));
-                        return [4 /*yield*/, conn.query(sql, [user.username, user.firstname, user.lastname, hash])];
+                        return [4 /*yield*/, conn.query(sql, [
+                                user.username,
+                                user.firstname,
+                                user.lastname,
+                                hash,
+                            ])];
                     case 2:
                         result = _a.sent();
                         conn.release();
@@ -124,7 +127,6 @@ var UserModel = /** @class */ (function () {
             });
         });
     };
-    ;
     UserModel.prototype.update = function (user) {
         return __awaiter(this, void 0, void 0, function () {
             var conn, sql, hash, result, err_4;
@@ -137,7 +139,12 @@ var UserModel = /** @class */ (function () {
                         conn = _a.sent();
                         sql = "UPDATE users\n                        SET firstname=$1, lastname=$2, password=$3\n                        WHERE id=$4\n                        RETURNING username,firstname,lastname,id";
                         hash = bcrypt_1.default.hashSync(user.password + pepper, parseInt(SALT_ROUNDS));
-                        return [4 /*yield*/, conn.query(sql, [user.firstname, user.lastname, hash, user.id])];
+                        return [4 /*yield*/, conn.query(sql, [
+                                user.firstname,
+                                user.lastname,
+                                hash,
+                                user.id,
+                            ])];
                     case 2:
                         result = _a.sent();
                         conn.release();
@@ -150,7 +157,6 @@ var UserModel = /** @class */ (function () {
             });
         });
     };
-    ;
     UserModel.prototype.delete = function (user_id) {
         return __awaiter(this, void 0, void 0, function () {
             var conn, sql, result, err_5;
@@ -191,9 +197,11 @@ var UserModel = /** @class */ (function () {
                         if (result.rows.length) {
                             user = result.rows[0];
                             if (bcrypt_1.default.compareSync(password + pepper, user.password)) {
-                                JWT = jsonwebtoken_1.default.sign({ user: {
-                                        username: username
-                                    } }, process.env.TOKEN_SECRET);
+                                JWT = jsonwebtoken_1.default.sign({
+                                    user: {
+                                        username: username,
+                                    },
+                                }, process.env.TOKEN_SECRET);
                                 return [2 /*return*/, JWT];
                             }
                         }

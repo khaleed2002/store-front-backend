@@ -42,7 +42,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var user_1 = require("../user");
 var database_1 = __importDefault(require("../../database"));
 var user = new user_1.UserModel();
-describe("User Model", function () {
+describe('User Model', function () {
     it('should have an index method', function () {
         expect(user.index).toBeDefined();
     });
@@ -63,7 +63,7 @@ var Khaled = {
     firstname: 'Khaled',
     lastname: 'Elgamal',
     username: 'Khaled123',
-    password: "khaled101010"
+    password: 'khaled101010',
 };
 describe('Test methods results in UserModel', function () { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
@@ -78,7 +78,7 @@ describe('Test methods results in UserModel', function () { return __awaiter(voi
                             id: 1,
                             firstname: 'Khaled',
                             lastname: 'Elgamal',
-                            username: 'Khaled123'
+                            username: 'Khaled123',
                         });
                         return [2 /*return*/];
                 }
@@ -91,12 +91,14 @@ describe('Test methods results in UserModel', function () { return __awaiter(voi
                     case 0: return [4 /*yield*/, user.index()];
                     case 1:
                         result = _a.sent();
-                        expect(result).toEqual([{
+                        expect(result).toEqual([
+                            {
                                 id: 1,
                                 firstname: 'Khaled',
                                 lastname: 'Elgamal',
-                                username: 'Khaled123'
-                            }]);
+                                username: 'Khaled123',
+                            },
+                        ]);
                         return [2 /*return*/];
                 }
             });
@@ -112,7 +114,7 @@ describe('Test methods results in UserModel', function () { return __awaiter(voi
                             id: 1,
                             firstname: 'Khaled',
                             lastname: 'Elgamal',
-                            username: 'Khaled123'
+                            username: 'Khaled123',
                         });
                         return [2 /*return*/];
                 }
@@ -132,7 +134,7 @@ describe('Test methods results in UserModel', function () { return __awaiter(voi
                             id: 1,
                             firstname: 'Khaled',
                             lastname: 'Abdelrahman',
-                            username: 'Khaled123'
+                            username: 'Khaled123',
                         });
                         return [2 /*return*/];
                 }

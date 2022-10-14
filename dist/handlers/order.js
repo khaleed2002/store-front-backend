@@ -118,7 +118,11 @@ var addProductToOrder = function (req, res) { return __awaiter(void 0, void 0, v
     });
 }); };
 exports.orderRoute = express_1.default.Router();
-exports.orderRoute.route('/users/:userid/orders/current').get(user_1.verifyAuthToken, currentOrder);
+exports.orderRoute
+    .route('/users/:userid/orders/current')
+    .get(user_1.verifyAuthToken, currentOrder);
 exports.orderRoute.route('/orders').get(user_1.verifyAuthToken, index);
 exports.orderRoute.route('/users/:userid/orders').post(user_1.verifyAuthToken, create);
-exports.orderRoute.route('/users/:userid/orders/:orderid').post(user_1.verifyAuthToken, addProductToOrder);
+exports.orderRoute
+    .route('/users/:userid/orders/:orderid')
+    .post(user_1.verifyAuthToken, addProductToOrder);
