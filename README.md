@@ -65,9 +65,12 @@ Before submitting your project, spin it up and test each endpoint. If each one r
 1- npm run build
 2- node dist/server.js
 
-
+#### ports
+you can configure database port and server port from .env file
 ## important
- to run project you should create .env file with these parameters
+ to run project you should:
+ npm install( to install all needed packages) !important
+ ### create .env file with these parameters
 - DB_NAME=store_front_backend
 - DB_NAME_TEST=store_front_backend_test
 - DB_PASSWORD=
@@ -78,6 +81,21 @@ Before submitting your project, spin it up and test each endpoint. If each one r
 - SALT_ROUNDS=
 - pepper=
 - TOKEN_SECRET=
+- SERVER_PORT=
+- DB_PORT
+### create database and connect to it
+- you cand create user using this 
+  - CREATE USER username WITH PASSWORD password;
+  ex: CREATE USER khaled WITH PASSWORD 'khaled123';
+- you should create database one for development and one for test using this query
+  - CREATE DATABASE storefront_db;
+  - CREATE DATABASE storefront_test_db;
+- now Grant all database privileges to user in both databases
+```sh
+  GRANT ALL PRIVILEGES ON DATABASE storefront_db TO khaled;
+  GRANT ALL PRIVILEGES ON DATABASE storefront_test_db TO khaled;
+```
+
 ## API Reference
 #### create a user ( return JWT )
 
