@@ -65,7 +65,7 @@ Before submitting your project, spin it up and test each endpoint. If each one r
 1- npm run build
 2- node dist/server.js
 
-#### ports
+### ports
 you can configure database port and server port from .env file
 ## important
  to run project you should:
@@ -82,7 +82,7 @@ you can configure database port and server port from .env file
 - pepper=
 - TOKEN_SECRET=
 - SERVER_PORT=
-- DB_PORT
+- DB_PORT=
 ### create database and connect to it
 - you cand create user using this 
   - CREATE USER username WITH PASSWORD password;
