@@ -49,6 +49,42 @@ These are the notes from a meeting with the frontend developer that describe wha
 - user_id
 - status of order (active or complete)
 
+## Database schema
+#### users
+
+| Field    | Type             | Special Attributes |
+| -------- | ---------------- | ------------------ |
+| **id**   | **Serial**       | **Primary Key**    |
+| **username** | **VARCHAR UNIQUE NOT NULL** | **N/A**            |
+| **firstname** | **VARCHAR(100)** | **N/A**            |
+| **lastname** | **VARCHAR(100)** | **N/A**            |
+| **password** | **TEXT NOT NULL** | **N/A**            |
+
+#### products
+
+| Field    | Type             | Special Attributes |
+| -------- | ---------------- | ------------------ |
+| **id**   | **Serial**       | **Primary Key**    |
+| **name** | **VARCHAR** | **N/A**            |
+| **price** | **INTEGER** | **N/A**            |
+| **category** | **VARCHAR** | **N/A**            |
+
+#### orders
+
+| Field     | Type             | Special Attributes |
+| --------- | ---------------- | ------------------ |
+| **id**    | **Serial**       | **Primary Key**    |
+| **user_id** | **INTEGER** | **Foreign Key**            |
+| **status** | **VARCHAR(10)**      | **N/A**    |
+
+#### orders_products
+
+| Field          | Type        | Special Attributes |
+| -------------- | ----------- | ------------------ |
+| **id**         | **Serial**  | **Primary Key**    |
+| **order_id** | **INTEGER NOT NULL** | **Foreign Key**    |
+| **product_id** | **INTEGER NOT NULL** | **Foreign Key**    |
+| **quantity** | **INTEGER NOT NULL** | **N/A**    |
 
 
 
