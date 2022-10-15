@@ -86,7 +86,7 @@ you can configure database port and server port from .env file
 ### create database and connect to it
 - you cand create user using this 
   - CREATE USER username WITH PASSWORD password;
-  ex: CREATE USER khaled WITH PASSWORD 'khaled123';
+    - ex: CREATE USER khaled WITH PASSWORD 'khaled123';
 - you should create database one for development and one for test using this query
   - CREATE DATABASE storefront_db;
   - CREATE DATABASE storefront_test_db;
