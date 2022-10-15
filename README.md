@@ -95,7 +95,7 @@ you can configure database port and server port from .env file
   GRANT ALL PRIVILEGES ON DATABASE storefront_db TO khaled;
   GRANT ALL PRIVILEGES ON DATABASE storefront_test_db TO khaled;
 ```
-- check database relations in ![alt text](https://github.com/khaleed2002/store-front-backend/blob/main/Database Relations.PNG?raw=true)
+- check database relations in ![alt text](https://github.com/khaleed2002/store-front-backend/blob/main/Database_Relations.PNG?raw=true)
 
 ## API Reference
 #### create a user ( return JWT )
