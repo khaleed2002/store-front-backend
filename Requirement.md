@@ -9,21 +9,25 @@ These are the notes from a meeting with the frontend developer that describe wha
 #### Products
 
 - Index
-- Show
+- Show (args: product id)
+- Delete [token required]
 - Create [token required]
-- [OPTIONAL] Top 5 most popular products
-- [OPTIONAL] Products by category (args: product category)
+- Products by category (args: product category)
 
 #### Users
 
 - Index [token required]
 - Show [token required]
-- Create N[token required]
+- Create 
+- Delete [token required]
+- Authenticate (args:username,password) 
 
 #### Orders
 
 - Current Order by user (args: user id)[token required]
-- [OPTIONAL] Completed Orders by user (args: user id)[token required]
+- Index => get all orders in system
+- addProductToOrder [token required]
+- Create [token required]
 
 ## Data Shapes
 
