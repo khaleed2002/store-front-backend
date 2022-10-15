@@ -51,9 +51,9 @@ export const authenticate = async (req: Request, res: Response) => {
   const userName: string = req.body.username;
   const password: string = req.body.password;
   const token = await users.authenticate(userName, password);
-  if(token===null){
-    return res.status(401).json(token)
-  }else{
+  if (token === null) {
+    return res.status(401).json(token);
+  } else {
     return res.json(token);
   }
 };
