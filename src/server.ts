@@ -3,8 +3,10 @@ import bodyParser from 'body-parser';
 import userRoute from './handlers/user';
 import productRoute, { categoryRoute } from './handlers/product';
 import { orderRoute } from './handlers/order';
+import dotenv from 'dotenv'
+dotenv.config()
 const app: express.Application = express();
-const port = 3000;
+const port = process.env.SERVER_PORT;
 app.use(bodyParser.json());
 
 app.get('/', function (req: Request, res: Response) {
