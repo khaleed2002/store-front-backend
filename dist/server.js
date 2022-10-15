@@ -31,8 +31,10 @@ var body_parser_1 = __importDefault(require("body-parser"));
 var user_1 = __importDefault(require("./handlers/user"));
 var product_1 = __importStar(require("./handlers/product"));
 var order_1 = require("./handlers/order");
+var dotenv_1 = __importDefault(require("dotenv"));
+dotenv_1.default.config();
 var app = (0, express_1.default)();
-var port = 3000;
+var port = process.env.SERVER_PORT;
 app.use(body_parser_1.default.json());
 app.get('/', function (req, res) {
     res.send('Hello World');

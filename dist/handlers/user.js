@@ -126,7 +126,12 @@ var authenticate = function (req, res) { return __awaiter(void 0, void 0, void 0
                 return [4 /*yield*/, users.authenticate(userName, password)];
             case 1:
                 token = _a.sent();
-                res.json(token);
+                if (token === null) {
+                    return [2 /*return*/, res.status(401).json(token)];
+                }
+                else {
+                    return [2 /*return*/, res.json(token)];
+                }
                 return [2 /*return*/];
         }
     });

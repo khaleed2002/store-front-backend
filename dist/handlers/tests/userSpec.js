@@ -41,52 +41,152 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var supertest_1 = __importDefault(require("supertest"));
 var server_1 = __importDefault(require("../../server"));
+var user_1 = __importDefault(require("../user"));
+var database_1 = __importDefault(require("../../database"));
+(0, user_1.default)(server_1.default);
 var request = (0, supertest_1.default)(server_1.default);
-describe('Test endpoint responses', function () {
-    it('Test root response', function () { return __awaiter(void 0, void 0, void 0, function () {
+describe('test user API routes', function () {
+    var token;
+    beforeAll(function () { return __awaiter(void 0, void 0, void 0, function () {
         var response;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, request.get('/')];
+                case 0: return [4 /*yield*/, request.post('/users').send({
+                        username: 'khaled',
+                        password: 'khaled123',
+                        firstname: 'Khaled',
+                        lastname: 'Abdelrahman',
+                    })];
+                case 1:
+                    _a.sent();
+                    return [4 /*yield*/, request
+                            .post('/users/auth')
+                            .send({ username: 'khaled', password: 'khaled123' })];
+                case 2:
+                    response = _a.sent();
+                    token = response.body;
+                    return [2 /*return*/];
+            }
+        });
+    }); });
+    it('Test create user route', function () { return __awaiter(void 0, void 0, void 0, function () {
+        var response;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, request.post('/users').send({
+                        username: 'ali',
+                        password: 'ali123',
+                        firstname: 'Ali',
+                        lastname: 'Ahmed',
+                    })];
+                case 1:
+                    response = _a.sent();
+                    expect(response.status).toEqual(201); //created
+                    return [2 /*return*/];
+            }
+        });
+    }); });
+    it('Test show user route', function () { return __awaiter(void 0, void 0, void 0, function () {
+        var response;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, request
+                        .get('/users/2')
+                        .set('Authorization', "Bearer ".concat(token))];
+                case 1:
+                    response = _a.sent();
+                    expect(response.body.username).toEqual('ali');
+                    expect(response.body.id).toEqual(2);
+                    expect(response.body.firstname).toEqual('Ali');
+                    expect(response.body.lastname).toEqual('Ahmed');
+                    return [2 /*return*/];
+            }
+        });
+    }); });
+    it('Test index user route', function () { return __awaiter(void 0, void 0, void 0, function () {
+        var response;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, request
+                        .get('/users')
+                        .set('Authorization', "Bearer ".concat(token))];
+                case 1:
+                    response = _a.sent();
+                    expect(response.body[0].username).toEqual('khaled');
+                    expect(response.body[0].id).toEqual(1);
+                    expect(response.body[0].firstname).toEqual('Khaled');
+                    expect(response.body[0].lastname).toEqual('Abdelrahman');
+                    expect(response.body[1].username).toEqual('ali');
+                    expect(response.body[1].id).toEqual(2);
+                    expect(response.body[1].firstname).toEqual('Ali');
+                    expect(response.body[1].lastname).toEqual('Ahmed');
+                    return [2 /*return*/];
+            }
+        });
+    }); });
+    it('test delete user route', function () { return __awaiter(void 0, void 0, void 0, function () {
+        var response;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, request
+                        .delete('/users')
+                        .send({ id: 2 })
+                        .set('Authorization', "Bearer ".concat(token))];
+                case 1:
+                    response = _a.sent();
+                    expect(response.body.username).toEqual('ali');
+                    return [4 /*yield*/, request
+                            .get('/users')
+                            .set('Authorization', "Bearer ".concat(token))];
+                case 2:
+                    response = _a.sent();
+                    expect(response.body.length).toEqual(1);
+                    return [2 /*return*/];
+            }
+        });
+    }); });
+    it('test authenticate user route', function () { return __awaiter(void 0, void 0, void 0, function () {
+        var response;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, request
+                        .post('/users/auth')
+                        .send({ username: 'khaled', password: 'khaled123' })];
                 case 1:
                     response = _a.sent();
                     expect(response.status).toEqual(200);
+                    expect(response.body).not.toEqual(null);
                     return [2 /*return*/];
             }
         });
     }); });
-    it('test users endpoint', function () { return __awaiter(void 0, void 0, void 0, function () {
+    it('test authenticate user route failure', function () { return __awaiter(void 0, void 0, void 0, function () {
         var response;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, request.get('/users')];
+                case 0: return [4 /*yield*/, request
+                        .post('/users/auth')
+                        .send({ username: 'khaled', password: '12345' })];
                 case 1:
                     response = _a.sent();
                     expect(response.status).toEqual(401);
+                    expect(response.body).toEqual(null);
                     return [2 /*return*/];
             }
         });
     }); });
-    it('test products endpoint', function () { return __awaiter(void 0, void 0, void 0, function () {
-        var response;
+    afterAll(function () { return __awaiter(void 0, void 0, void 0, function () {
+        var conn, sql;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, request.get('/products')];
+                case 0: return [4 /*yield*/, database_1.default.connect()];
                 case 1:
-                    response = _a.sent();
-                    expect(response.status).toEqual(200);
-                    return [2 /*return*/];
-            }
-        });
-    }); });
-    it('test orders endpoint', function () { return __awaiter(void 0, void 0, void 0, function () {
-        var response;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4 /*yield*/, request.get('/orders')];
-                case 1:
-                    response = _a.sent();
-                    expect(response.status).toEqual(401);
+                    conn = _a.sent();
+                    sql = "DELETE FROM users;\n ALTER SEQUENCE users_id_seq RESTART WITH 1;\n        \nDELETE FROM products;\n ALTER SEQUENCE products_id_seq RESTART WITH 1;\n\n        DELETE FROM orders;\n ALTER SEQUENCE orders_id_seq RESTART WITH 1;";
+                    return [4 /*yield*/, conn.query(sql)];
+                case 2:
+                    _a.sent();
+                    conn.release();
                     return [2 /*return*/];
             }
         });

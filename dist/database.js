@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var dotenv_1 = __importDefault(require("dotenv"));
 var pg_1 = require("pg");
 dotenv_1.default.config();
-var _a = process.env, ENV = _a.ENV, DB_HOST = _a.DB_HOST, DB_USER = _a.DB_USER, DB_PASSWORD = _a.DB_PASSWORD, DB_NAME = _a.DB_NAME, DB_NAME_TEST = _a.DB_NAME_TEST;
+var _a = process.env, ENV = _a.ENV, DB_HOST = _a.DB_HOST, DB_USER = _a.DB_USER, DB_PASSWORD = _a.DB_PASSWORD, DB_NAME = _a.DB_NAME, DB_NAME_TEST = _a.DB_NAME_TEST, DB_PORT = _a.DB_PORT;
 var client = new pg_1.Pool();
 if (ENV === 'dev') {
     client = new pg_1.Pool({
@@ -14,6 +14,7 @@ if (ENV === 'dev') {
         user: DB_USER,
         password: DB_PASSWORD,
         database: DB_NAME,
+        port: parseInt(DB_PORT),
     });
 }
 else if (ENV === 'test') {
@@ -22,6 +23,7 @@ else if (ENV === 'test') {
         user: DB_USER,
         password: DB_PASSWORD,
         database: DB_NAME_TEST,
+        port: parseInt(DB_PORT),
     });
 }
 exports.default = client;
