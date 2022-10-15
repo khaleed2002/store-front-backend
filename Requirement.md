@@ -37,6 +37,7 @@ These are the notes from a meeting with the frontend developer that describe wha
 #### User
 
 - id
+- username
 - firstName
 - lastName
 - password
@@ -44,11 +45,14 @@ These are the notes from a meeting with the frontend developer that describe wha
 #### Orders
 
 - id
-- id of each product in the order
-- quantity of each product in the order
 - user_id
 - status of order (active or complete)
 
+#### orders_product
+- id SERIAL PRIMARY KEY,
+- order_id 
+- product_id 
+- quantity
 ## Database schema
 #### users
 
