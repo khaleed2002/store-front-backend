@@ -69,6 +69,7 @@ These are the notes from a meeting with the frontend developer that describe wha
 | **password** | **TEXT NOT NULL** | **N/A**            |
 
 - **users table from psql \d command:**
+
   Column   |          Type          | Collation | Nullable |              Default
 -----------+------------------------+-----------+----------+-----------------------------------
  id        | integer                |           | not null | nextval('users_id_seq'::regclass)
@@ -91,6 +92,7 @@ These are the notes from a meeting with the frontend developer that describe wha
 | **category** | **VARCHAR** | **N/A**            |
 
 - **products table from psql \d command:**
+
 |  Column  |       Type        | Collation | Nullable |               Default |
 |----------+-------------------+-----------+----------+--------------------------------------|
 | id       | integer           |           | not null | nextval('products_id_seq'::regclass)|
@@ -111,6 +113,7 @@ These are the notes from a meeting with the frontend developer that describe wha
 | **status** | **VARCHAR(10)**      | **N/A**    |
 
 - **orders table from psql \d command:**
+
 |Column  |         Type          | Collation | Nullable |              Default|
 |---------+-----------------------+-----------+----------+------------------------------------|
 | id      | integer               |           | not null | nextval('orders_id_seq'::regclass)|
@@ -132,6 +135,7 @@ These are the notes from a meeting with the frontend developer that describe wha
 | **quantity** | **INTEGER NOT NULL** | **N/A**    |
 
 - **orders_products table from psql \d command:**
+
 |   Column   |  Type   | Collation | Nullable |                   Default|
 |------------+---------+-----------+----------+---------------------------------------------|
 | id         | integer |           | not null | nextval('orders_products_id_seq'::regclass)|
