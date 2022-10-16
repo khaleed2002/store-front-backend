@@ -68,7 +68,7 @@ These are the notes from a meeting with the frontend developer that describe wha
 | **lastname** | **VARCHAR(100)** | **N/A**            |
 | **password** | **TEXT NOT NULL** | **N/A**            |
 
-- **users table from psql \d command:**
+#### **users table from psql \d command:**
 
   Column   |          Type          | Collation | Nullable |              Default
 -----------+------------------------+-----------+----------+-----------------------------------
@@ -91,7 +91,7 @@ These are the notes from a meeting with the frontend developer that describe wha
 | **price** | **INTEGER** | **N/A**            |
 | **category** | **VARCHAR** | **N/A**            |
 
-- **products table from psql \d command:**
+#### **products table from psql \d command:**
 
 |  Column  |       Type        | Collation | Nullable |               Default |
 |----------+-------------------+-----------+----------+--------------------------------------|
@@ -112,7 +112,7 @@ These are the notes from a meeting with the frontend developer that describe wha
 | **user_id** | **INTEGER** | **Foreign Key**            |
 | **status** | **VARCHAR(10)**      | **N/A**    |
 
-- **orders table from psql \d command:**
+#### **orders table from psql \d command:**
 
 |Column  |         Type          | Collation | Nullable |              Default|
 |---------+-----------------------+-----------+----------+------------------------------------|
@@ -134,7 +134,7 @@ These are the notes from a meeting with the frontend developer that describe wha
 | **product_id** | **INTEGER NOT NULL** | **Foreign Key**    |
 | **quantity** | **INTEGER NOT NULL** | **N/A**    |
 
-- **orders_products table from psql \d command:**
+#### **orders_products table from psql \d command:**
 
 |   Column   |  Type   | Collation | Nullable |                   Default|
 |------------+---------+-----------+----------+---------------------------------------------|
