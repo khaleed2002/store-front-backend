@@ -38,7 +38,7 @@ const create = async (req: Request, res: Response) => {
     );
     res.status(201).json(JWT);
   } catch (err) {
-    res.status(400);
+    res.status(500);
     res.json(err);
   }
 };

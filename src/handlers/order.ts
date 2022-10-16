@@ -13,7 +13,7 @@ const create = async (req: Request, res: Response) => {
     const result_newOrder = await order.create(newOrder);
     res.status(201).json(result_newOrder);
   } catch (err) {
-    res.status(400).json(err);
+    res.status(500).json(err);
   }
 };
 const currentOrder = async (req: Request, res: Response) => {
@@ -21,7 +21,7 @@ const currentOrder = async (req: Request, res: Response) => {
     const currentOrder = await order.currentOrder(parseInt(req.params.userid));
     res.json(currentOrder);
   } catch (err) {
-    res.status(400).json(err);
+    res.status(500).json(err);
   }
 };
 const index = async (_req: Request, res: Response) => {
@@ -37,7 +37,7 @@ const addProductToOrder = async (req: Request, res: Response) => {
     );
     res.status(201).json(addedProduct);
   } catch (err) {
-    res.status(400).json(err);
+    res.status(500).json(err);
   }
 };
 

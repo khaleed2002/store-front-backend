@@ -61,7 +61,7 @@ var create = function (req, res) { return __awaiter(void 0, void 0, void 0, func
                 return [3 /*break*/, 3];
             case 2:
                 err_1 = _a.sent();
-                res.status(400).json(err_1);
+                res.status(500).json(err_1);
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
         }
@@ -80,7 +80,7 @@ var currentOrder = function (req, res) { return __awaiter(void 0, void 0, void 0
                 return [3 /*break*/, 3];
             case 2:
                 err_2 = _a.sent();
-                res.status(400).json(err_2);
+                res.status(500).json(err_2);
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
         }
@@ -111,7 +111,7 @@ var addProductToOrder = function (req, res) { return __awaiter(void 0, void 0, v
                 return [3 /*break*/, 3];
             case 2:
                 err_3 = _a.sent();
-                res.status(400).json(err_3);
+                res.status(500).json(err_3);
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
         }

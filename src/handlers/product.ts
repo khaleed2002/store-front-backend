@@ -26,7 +26,7 @@ const getByCategory = async (req: Request, res: Response) => {
     );
     return res.json(allProductsByCat);
   } catch (err) {
-    return res.status(400).json(err);
+    return res.status(500).json(err);
   }
 };
 
@@ -40,7 +40,7 @@ const create = async (req: Request, res: Response) => {
     const result = await products.create(newProduct);
     res.status(201).json(result);
   } catch (err) {
-    res.status(400).json(err);
+    res.status(500).json(err);
   }
 };
 
