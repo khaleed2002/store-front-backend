@@ -9,7 +9,9 @@
     "prettier": "prettier --config .prettierrc src/**/*.ts --write",
     "build": "npx tsc",
     "jasmine": "jasmine",
-    "test": "npm run build &&set ENV=test&&db-migrate up --env test&&npm run jasmine&&db-migrate reset --env test"
+    "pretest": "npm run build && db-migrate up --env test",
+    "test": "set ENV=test&& npm run jasmine",
+    "posttest": "db-migrate reset --env test"
   },
   "author": "Khaled",
   "license": "ISC",
