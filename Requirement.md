@@ -138,9 +138,9 @@ Column  |         Type          | Collation | Nullable |              Default
  order_id   | integer |           | not null |
  product_id | integer |           | not null |
  quantity   | integer |           | not null |
-Indexes:
-    "orders_products_pkey" PRIMARY KEY, btree (id)
-Foreign-key constraints:
-    "orders_products_order_id_fkey" FOREIGN KEY (order_id) REFERENCES orders(id)
-    "orders_products_product_id_fkey" FOREIGN KEY (product_id) REFERENCES products(id)
+- Indexes:
+    - "orders_products_pkey" PRIMARY KEY, btree (id)
+- Foreign-key constraints:
+    - "orders_products_order_id_fkey" FOREIGN KEY (order_id) REFERENCES orders(id)
+    - "orders_products_product_id_fkey" FOREIGN KEY (product_id) REFERENCES products(id)
 
