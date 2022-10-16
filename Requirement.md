@@ -91,12 +91,12 @@ These are the notes from a meeting with the frontend developer that describe wha
 | **category** | **VARCHAR** | **N/A**            |
 
 - **products table from psql \d command:**
-  Column  |       Type        | Collation | Nullable |               Default
-----------+-------------------+-----------+----------+--------------------------------------
- id       | integer           |           | not null | nextval('products_id_seq'::regclass)
- name     | character varying |           |          |
- price    | integer           |           |          |
- category | character varying |           |          |
+|  Column  |       Type        | Collation | Nullable |               Default |
+|----------+-------------------+-----------+----------+--------------------------------------|
+| id       | integer           |           | not null | nextval('products_id_seq'::regclass)|
+| name     | character varying |           |          |                                       |
+| price    | integer           |           |          |                                       |
+| category | character varying |           |          |                                       |
 - Indexes:
     - "products_pkey" PRIMARY KEY, btree (id)
 - Referenced by:
@@ -111,11 +111,11 @@ These are the notes from a meeting with the frontend developer that describe wha
 | **status** | **VARCHAR(10)**      | **N/A**    |
 
 - **orders table from psql \d command:**
-Column  |         Type          | Collation | Nullable |              Default
----------+-----------------------+-----------+----------+------------------------------------
- id      | integer               |           | not null | nextval('orders_id_seq'::regclass)
- user_id | integer               |           |          |
- status  | character varying(10) |           |          |
+|Column  |         Type          | Collation | Nullable |              Default|
+|---------+-----------------------+-----------+----------+------------------------------------|
+| id      | integer               |           | not null | nextval('orders_id_seq'::regclass)|
+| user_id | integer               |           |          |                                     |
+| status  | character varying(10) |           |          |                                     |
 - Indexes:
     - "orders_pkey" PRIMARY KEY, btree (id)
 - Foreign-key constraints:
@@ -132,12 +132,12 @@ Column  |         Type          | Collation | Nullable |              Default
 | **quantity** | **INTEGER NOT NULL** | **N/A**    |
 
 - **orders_products table from psql \d command:**
-   Column   |  Type   | Collation | Nullable |                   Default
-------------+---------+-----------+----------+---------------------------------------------
- id         | integer |           | not null | nextval('orders_products_id_seq'::regclass)
- order_id   | integer |           | not null |
- product_id | integer |           | not null |
- quantity   | integer |           | not null |
+|   Column   |  Type   | Collation | Nullable |                   Default|
+|------------+---------+-----------+----------+---------------------------------------------|
+| id         | integer |           | not null | nextval('orders_products_id_seq'::regclass)|
+| order_id   | integer |           | not null |                                             |
+| product_id | integer |           | not null |                                             |
+| quantity   | integer |           | not null |                                             |
 - Indexes:
     - "orders_products_pkey" PRIMARY KEY, btree (id)
 - Foreign-key constraints:
