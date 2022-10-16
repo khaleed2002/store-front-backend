@@ -70,13 +70,13 @@ These are the notes from a meeting with the frontend developer that describe wha
 
 - **users table from psql \d command:**
 
-  Column   |          Type          | Collation | Nullable |              Default
------------|------------------------|-----------|----------|-----------------------------------
- id        | integer                |           | not null | nextval('users_id_seq'::regclass)
- username  | character varying      |           | not null |
- firstname | character varying(100) |           |          |
- lastname  | character varying(100) |           |          |
- password  | text                   |           | not null |
+|  Column   |          Type          | Collation | Nullable |              Default|
+|-----------|------------------------|-----------|----------|-----------------------------------|
+| id        | integer                |           | not null | nextval('users_id_seq'::regclass)|
+| username  | character varying      |           | not null |                                   |
+| firstname | character varying(100) |           |          |                                   |
+| lastname  | character varying(100) |           |          |                                   |
+| password  | text                   |           | not null |                                   |
 - Indexes:
     - "users_pkey" PRIMARY KEY, btree (id)
     - "users_username_key" UNIQUE CONSTRAINT, btree (username)
