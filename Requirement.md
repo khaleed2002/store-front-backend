@@ -68,10 +68,10 @@ These are the notes from a meeting with the frontend developer that describe wha
 | **lastname** | **VARCHAR(100)** | **N/A**            |
 | **password** | **TEXT NOT NULL** | **N/A**            |
 
-#### **users table from psql \d command:**
+- **users table from psql \d command:**
 
   Column   |          Type          | Collation | Nullable |              Default
------------+------------------------+-----------+----------+-----------------------------------
+-----------|------------------------|-----------|----------|-----------------------------------
  id        | integer                |           | not null | nextval('users_id_seq'::regclass)
  username  | character varying      |           | not null |
  firstname | character varying(100) |           |          |
@@ -91,10 +91,10 @@ These are the notes from a meeting with the frontend developer that describe wha
 | **price** | **INTEGER** | **N/A**            |
 | **category** | **VARCHAR** | **N/A**            |
 
-#### **products table from psql \d command:**
+- **products table from psql \d command:**
 
 |  Column  |       Type        | Collation | Nullable |               Default |
-|----------+-------------------+-----------+----------+--------------------------------------|
+|----------|-------------------|-----------|----------|--------------------------------------|
 | id       | integer           |           | not null | nextval('products_id_seq'::regclass)|
 | name     | character varying |           |          |                                       |
 | price    | integer           |           |          |                                       |
@@ -112,10 +112,10 @@ These are the notes from a meeting with the frontend developer that describe wha
 | **user_id** | **INTEGER** | **Foreign Key**            |
 | **status** | **VARCHAR(10)**      | **N/A**    |
 
-#### **orders table from psql \d command:**
+- **orders table from psql \d command:**
 
-|Column  |         Type          | Collation | Nullable |              Default|
-|---------+-----------------------+-----------+----------+------------------------------------|
+| Column  |         Type          | Collation | Nullable |              Default|
+|---------|-----------------------|-----------|----------|------------------------------------|
 | id      | integer               |           | not null | nextval('orders_id_seq'::regclass)|
 | user_id | integer               |           |          |                                     |
 | status  | character varying(10) |           |          |                                     |
@@ -134,10 +134,10 @@ These are the notes from a meeting with the frontend developer that describe wha
 | **product_id** | **INTEGER NOT NULL** | **Foreign Key**    |
 | **quantity** | **INTEGER NOT NULL** | **N/A**    |
 
-#### **orders_products table from psql \d command:**
+- **orders_products table from psql \d command:**
 
 |   Column   |  Type   | Collation | Nullable |                   Default|
-|------------+---------+-----------+----------+---------------------------------------------|
+|------------|---------|-----------|----------|---------------------------------------------|
 | id         | integer |           | not null | nextval('orders_products_id_seq'::regclass)|
 | order_id   | integer |           | not null |                                             |
 | product_id | integer |           | not null |                                             |
