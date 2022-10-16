@@ -67,6 +67,8 @@ Before submitting your project, spin it up and test each endpoint. If each one r
 
 ### ports
 you can configure database port and server port from .env file
+ - Database port:5432
+ - Server port:3000
 ## important
  to run project you should:
  npm install( to install all needed packages) !important
