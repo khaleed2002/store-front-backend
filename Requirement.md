@@ -68,6 +68,19 @@ These are the notes from a meeting with the frontend developer that describe wha
 | **lastname** | **VARCHAR(100)** | **N/A**            |
 | **password** | **TEXT NOT NULL** | **N/A**            |
 
+- **users table from psql \d command:**
+  Column   |          Type          | Collation | Nullable |              Default
+-----------+------------------------+-----------+----------+-----------------------------------
+ id        | integer                |           | not null | nextval('users_id_seq'::regclass)
+ username  | character varying      |           | not null |
+ firstname | character varying(100) |           |          |
+ lastname  | character varying(100) |           |          |
+ password  | text                   |           | not null |
+- Indexes:
+    - "users_pkey" PRIMARY KEY, btree (id)
+    - "users_username_key" UNIQUE CONSTRAINT, btree (username)
+- Referenced by:
+    - TABLE "orders" CONSTRAINT "orders_user_id_fkey" FOREIGN KEY (user_id) REFERENCES users(id)
 #### products
 
 | Field    | Type             | Special Attributes |
@@ -77,6 +90,18 @@ These are the notes from a meeting with the frontend developer that describe wha
 | **price** | **INTEGER** | **N/A**            |
 | **category** | **VARCHAR** | **N/A**            |
 
+- **products table from psql \d command:**
+  Column  |       Type        | Collation | Nullable |               Default
+----------+-------------------+-----------+----------+--------------------------------------
+ id       | integer           |           | not null | nextval('products_id_seq'::regclass)
+ name     | character varying |           |          |
+ price    | integer           |           |          |
+ category | character varying |           |          |
+- Indexes:
+    - "products_pkey" PRIMARY KEY, btree (id)
+- Referenced by:
+    - TABLE "orders_products" CONSTRAINT "orders_products_product_id_fkey" FOREIGN KEY  
+    (product_id) REFERENCES products(id)
 #### orders
 
 | Field     | Type             | Special Attributes |
@@ -85,6 +110,18 @@ These are the notes from a meeting with the frontend developer that describe wha
 | **user_id** | **INTEGER** | **Foreign Key**            |
 | **status** | **VARCHAR(10)**      | **N/A**    |
 
+- **orders table from psql \d command:**
+Column  |         Type          | Collation | Nullable |              Default
+---------+-----------------------+-----------+----------+------------------------------------
+ id      | integer               |           | not null | nextval('orders_id_seq'::regclass)
+ user_id | integer               |           |          |
+ status  | character varying(10) |           |          |
+- Indexes:
+    - "orders_pkey" PRIMARY KEY, btree (id)
+- Foreign-key constraints:
+    - "orders_user_id_fkey" FOREIGN KEY (user_id) REFERENCES users(id)
+- Referenced by:
+    - TABLE "orders_products" CONSTRAINT "orders_products_order_id_fkey" FOREIGN KEY (order_id) REFERENCES orders(id)
 #### orders_products
 
 | Field          | Type        | Special Attributes |
@@ -94,6 +131,16 @@ These are the notes from a meeting with the frontend developer that describe wha
 | **product_id** | **INTEGER NOT NULL** | **Foreign Key**    |
 | **quantity** | **INTEGER NOT NULL** | **N/A**    |
 
-
-
+- **orders_products table from psql \d command:**
+   Column   |  Type   | Collation | Nullable |                   Default
+------------+---------+-----------+----------+---------------------------------------------
+ id         | integer |           | not null | nextval('orders_products_id_seq'::regclass)
+ order_id   | integer |           | not null |
+ product_id | integer |           | not null |
+ quantity   | integer |           | not null |
+Indexes:
+    "orders_products_pkey" PRIMARY KEY, btree (id)
+Foreign-key constraints:
+    "orders_products_order_id_fkey" FOREIGN KEY (order_id) REFERENCES orders(id)
+    "orders_products_product_id_fkey" FOREIGN KEY (product_id) REFERENCES products(id)
 
