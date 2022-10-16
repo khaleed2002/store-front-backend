@@ -60,7 +60,9 @@ Before submitting your project, spin it up and test each endpoint. If each one r
 - npm run prettier (to run prettier)
 - npm run build (compile typescript to javascript)
 - npm run start (open server using nodemon)
+- npm run pretest (build project and setup migration for testing)
 - npm run test (test spec files)
+- npm run posttest (drop migration)
 ### start server
 1- npm run build
 2- node dist/server.js
